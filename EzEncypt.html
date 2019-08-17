@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>EzEncypt</title>
+    <style media="screen">
+    table{
+      margin: auto;
+    }
+    body{
+      background-color: black;
+      color: white;
+    }
+      h1{
+        padding-bottom: 30px;
+        text-align:center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>EzEncypt</h1>
+    <form class="" action="">
+      <table>
+        <tr>
+          <td><label>Encyption:</label></td>
+          <td><textarea rows="4" cols="50" id="str1" name="enc" value="">AAA</textarea></td>
+          <!-- <td><input type="text" id="str1" name="enc" value=""></td> -->
+          <td><p id="enc"></p></td>
+        </tr>
+        <td></td>
+          <td>
+            <button type="button"  onclick="Encyption()">Encypt</button>
+          </td>
+          <td></td>
+        <tr>
+        </tr>
+
+        <tr>
+          <td><label>Decyption:</label></td>
+          <td><textarea rows="4" cols="50" id="str2" name="dec" value="">AAA</textarea></td>
+          <!-- <td><input type="text" id="str2" name="dec" value=""></td> -->
+          <td>  <p id="Dec"></p></td>
+        </tr>
+        <td></td>
+          <td>
+            <button type="button"  onclick="Decyption()">Decypt</button>
+          </td>
+          <td></td>
+        <tr>
+        </tr>
+      </table>
+
+    </form>
+
+
+
+    <script type="text/javascript">
+    function Encyption()
+    {
+      var str1 = document.getElementById('str1').value;
+      // console.log(str);
+
+      var str_arr = [];
+      var str_ascii = [];
+      var str_enc = [];
+      str_arr = str1;
+
+      for (var i = 0; i < str_arr.length; i++)
+      {
+        // console.log(i+" --> "+str_arr[i]+" --> "+str_arr[i].charCodeAt(0));
+        str_ascii[i] = str_arr[i].charCodeAt(0)+20;
+        str_enc += String.fromCharCode(str_ascii[i]);
+      }
+       document.getElementById('enc').innerHTML = str_enc;    //โชว์ใน <p>
+    }
+
+    function Decyption() {
+      var str2 = document.getElementById('str2').value;
+       // console.log(str2);
+       var str_arr = [];
+       var str_ascii = [];
+       var str_enc = [];
+       str_arr = str2;
+
+       for (var i = 0; i < str_arr.length; i++)
+       {
+         // console.log(i+" --> "+str_arr[i]+" --> "+str_arr[i].charCodeAt(0));
+         str_ascii[i] = str_arr[i].charCodeAt(0)-20;
+         str_enc += String.fromCharCode(str_ascii[i]);
+       }
+       document.getElementById('Dec').innerHTML = str_enc;    //โชว์ใน <p>
+
+       var enc_ck = document.getElementById('str1').value;  ///
+       var dec_ck = document.getElementById('Dec').innerHTML;
+       if (enc_ck == dec_ck) {
+         console.log("correct");
+       }
+       else{
+         console.log("no");
+       }
+
+    }
+
+
+    </script>
+  </body>
+</html>
